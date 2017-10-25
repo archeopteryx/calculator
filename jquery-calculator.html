@@ -113,23 +113,28 @@ $(function(){
         if (firstInputExists) {
 
             if ($(this).val()===("minus")) {  
-                $("#operator").append("&minus;");
+                $("#operator").text(" - ");
+                operator = "minus";
             }
 
             else if ($(this).val()===("plus")) {  
-                $("#operator").append("+");
+                $("#operator").text(" + ");
+                operator = "plus";
             }
 
             else if ($(this).val()===("times")) {  
-                $("#operator").append("&times;");
+                $("#operator").text(" X ");
+                operator = "times";
             }
 
             else if ($(this).val()===("divide")) {  
-                $("#operator").append("&divide;");
+                $("#operator").text(" ÷ ");
+                operator = "divide";
             }
 
             else if ($(this).val()===("power")) {  
-                $("#operator").append("^");
+                $("#operator").text(" ^ ");
+                operator = "power";
             }
 
         };
@@ -144,28 +149,28 @@ $(function(){
         console.log(firstInput);
         console.log(secondInput);
 
-        if ($('.button-plus')) {
+        if (operator === 'plus') {
             var summation = firstInput + secondInput;
             $("#result").append(summation);
         }
 
-        else if ($('.button-minus')) {
+        else if (operator === 'minus') {
             var subtract = firstInput - secondInput;
             $("#result").append(subtract);
         }
 
-        else if ($('.button-divide')) {
+        else if (operator === 'divide') {
             var division = firstInput /= secondInput;
             $("#result").append(division);
         }
 
-        else if ($('.button-multiply')) {
+        else if (operator === 'times') {
             var multiply = firstInput * secondInput;
             $("#result").append(multiply);
         }
 
-        else if ($('button-power')) {
-            var exponent = math.pow(firstInput, secondInput);
+        else if (operator === 'power') {
+            var exponent = Math.pow(firstInput, secondInput);
             $("#result").append(exponent);
         }
 
@@ -178,6 +183,8 @@ $(function(){
        $('#operator').empty();
        $('#second-number').empty();
        $('#result').empty();
+       firstInput="";
+       thirdInput="";
    });  
 
     $("#opener, #closer").click(function(){ 
