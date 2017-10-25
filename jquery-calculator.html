@@ -84,11 +84,12 @@ var firstInput = 0;
 var secondInput = false;
 var thirdInput = 0;
 var solution = 0;
+var operator = 
 
 $(function(){ 
 
     $(".number").click(function() {
-        firstInput = true;
+        // firstInput = true;
 
         if (secondInput) {
             thirdInput = $(this).val()
@@ -106,7 +107,7 @@ $(function(){
     $(".operator").click(function(){ 
         secondInput = true;
 
-        if (firstInput) {
+        // if (firstInput) {
 
             if ($(this).val()===("minus")) {  
                 $("#operator").append("&minus;");
@@ -128,7 +129,7 @@ $(function(){
                 $("#operator").append("^");
             }
 
-        };
+        // };
 
         firstInput = parseInt(firstInput);
         thirdInput = parseInt(thirdInput);
@@ -162,8 +163,10 @@ $(function(){
             $("#result").append(power);
         }
 
-        if ($(this).val()===("plus")) {
-            addition (firstInput,thirdInput);
+        if ($('.button-plus')) {
+            var summation = firstInput + thirdInput;
+            // addition (firstInput,thirdInput);
+            $("#result").append(summation);
         }
 
     }); 
