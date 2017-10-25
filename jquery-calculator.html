@@ -131,6 +131,7 @@ $(function(){
 
         // };
 
+
         var numOne = parseInt(firstInput);
         var numTwo = parseInt(thirdInput);
 
@@ -138,37 +139,36 @@ $(function(){
 
     $(".equal").click(function(){ 
 
-        function addition (x,y){
-            var resultPlus = x + y;
-            $("#result").append(resultPlus);
+        firstInput = parseInt(firstInput);
+        thirdInput = parseInt(thirdInput);
+
+        if (operator === "plus") {
+          result = firstNumber + secondNumber;
+        }
+        
+        else if (operator === "minus") {
+          result = firstNumber - secondNumber;
         }
 
-        function subtraction (x,y) {
-            var resultMinus = x - y;
-            $("#result").append(resultMinus);
+        else if (operator === "times") {
+          result = firstNumber * secondNumber;
         }
 
-        function multiplication (x,y) {
-            var resultTimes = x * y;
-            $("#result").append(resultTimes);
+        else if (operator === "divide") {
+          result = firstNumber / secondNumber;
         }
 
-        function divide (x,y) {
-            var resultDivide = x/y;
-            $("#result").append(resultDivide);
-        }
 
-        function power (x,y) { 
-            var power = Math.pow(x,y);
-            $("#result").append(power);
-        }
 
         if ($('.button-plus')) {
             var summation = firstInput + secondInput;
             // addition (firstInput,thirdInput);
             $("#result").append(summation);
+
         }
 
+        $("#result").html(solution);
+        
     }); 
 
     $(".clear").click(function(){ 
