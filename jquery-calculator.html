@@ -80,24 +80,27 @@
         $(document).ready(function(){
 
 // Your code here...
-var firstInput = 0;
-var secondInput = false;
-var thirdInput = 0;
+var firstInput = "";
+var firstInputExists = false;
+var secondInput = "";
+var secondInputExists = false;
+var thirdInput = "";
 var solution = 0;
-var operator = 
+var operator = "";
 
 $(function(){ 
 
     $(".number").click(function() {
-        // firstInput = true;
+        firstInputExists = true;
 
-        if (secondInput) {
-            thirdInput = $(this).val()
-            $("#second-number").append(thirdInput);
+        if (secondInputExists) {
+            thirdInput += $(this).val()
+            $("#second-number").text(thirdInput);
+            console.log(secondInput);
         }
         else {
-            firstInput = $(this).val();
-            $("#first-number").append(firstInput);
+            firstInput += $(this).val();
+            $("#first-number").text(firstInput);
             console.log(firstInput);
         };
 
@@ -105,9 +108,9 @@ $(function(){
     }); 
 
     $(".operator").click(function(){ 
-        secondInput = true;
+        secondInputExists = true;
 
-        // if (firstInput) {
+        if (firstInputExists) {
 
             if ($(this).val()===("minus")) {  
                 $("#operator").append("&minus;");
@@ -129,51 +132,48 @@ $(function(){
                 $("#operator").append("^");
             }
 
-        // };
-
-
-        var numOne = parseInt(firstInput);
-        var numTwo = parseInt(thirdInput);
+        };
 
     }); 
 
     $(".equal").click(function(){ 
 
         firstInput = parseInt(firstInput);
-        thirdInput = parseInt(thirdInput);
+        secondInput = parseInt(thirdInput);
 
-        if (operator === "plus") {
-          result = firstNumber + secondNumber;
-        }
-        
-        else if (operator === "minus") {
-          result = firstNumber - secondNumber;
-        }
-
-        else if (operator === "times") {
-          result = firstNumber * secondNumber;
-        }
-
-        else if (operator === "divide") {
-          result = firstNumber / secondNumber;
-        }
-
-
+        console.log(firstInput);
+        console.log(secondInput);
 
         if ($('.button-plus')) {
             var summation = firstInput + secondInput;
-            // addition (firstInput,thirdInput);
             $("#result").append(summation);
-
         }
 
-        $("#result").html(solution);
-        
+        else if ($('.button-minus')) {
+            var subtract = firstInput - secondInput;
+            $("#result").append(subtract);
+        }
+
+        else if ($('.button-divide')) {
+            var division = firstInput /= secondInput;
+            $("#result").append(division);
+        }
+
+        else if ($('.button-multiply')) {
+            var multiply = firstInput * secondInput;
+            $("#result").append(multiply);
+        }
+
+        else if ($('button-power')) {
+            var exponent = math.pow(firstInput, secondInput);
+            $("#result").append(exponent);
+        }
+
     }); 
 
     $(".clear").click(function(){ 
-        firstInput = false;
-        secondInput = false;
+        firstInputExists = false;
+        secondInputExists = false;
        $('#first-number').empty();
        $('#operator').empty();
        $('#second-number').empty();
